@@ -49,7 +49,10 @@ function createShaders() {
 }
 
 function createVertices() {
-  vertices = [-0.9, -0.9, 0.0, 0.9, -0.9, 0.0, 0.0, 0.9, 0.0];
+  vertices = [
+    -0.9, 0.5, 0, -0.7, -0.5, 0, -0.5, 0.5, 0, -0.3, -0.5, 0, -0.1, 0.5, 0, 0.1,
+    -0.5, 0, 0.3, 0.5, 0, 0.5, -0.5, 0, 0.7, 0.5, 0, 0.9, -0.5, 0,
+  ];
 
   var buffer = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
@@ -65,10 +68,10 @@ function createVertices() {
   gl.vertexAttrib1f(pointSize, 20);
 
   const color = gl.getUniformLocation(shaderProgram, "color");
-  gl.uniform4f(color, 1, 1, 0, 1);
+  gl.uniform4f(color, 0, 0, 0, 1);
 }
 
 function draw() {
   gl.clear(gl.COLOR_BUFFER_BIT);
-  gl.drawArrays(gl.POINTS, 0, 3);
+  gl.drawArrays(gl.LINE_STRIP, 0, 10);
 }
